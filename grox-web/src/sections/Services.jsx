@@ -1,32 +1,64 @@
 export default function Services() {
   return (
-    <section id="services" className="py-32">
-      <div className="max-w-[1200px] mx-auto px-6">
-        <h2 className="text-3xl md:text-4xl font-semibold">
-          What We Execute
-        </h2>
+    <section id="services" className="py-32 border-t border-white/10">
+      <div className="max-w-[1200px] mx-auto px-6 grid md:grid-cols-12 gap-12">
 
-        <div className="mt-20 grid md:grid-cols-3 gap-16">
-          <div>
-            <h3 className="text-xl font-medium">Design</h3>
-            <p className="mt-4 text-[var(--grox-gray)]">
-              Posters, thumbnails, branding, and visual systems built for impact.
+        {/* Left anchor */}
+        <div className="md:col-span-4">
+          <h2 className="text-4xl md:text-5xl font-semibold leading-tight">
+            What We Execute
+          </h2>
+
+          <p className="mt-6 max-w-sm text-[var(--grox-gray)] leading-relaxed space-y-2">
+            GROX is built as an execution system.
+            <br />
+            Not a service list.
+            <br />
+            Not a freelancer network.
+            <br />
+            <br />
+            Every pillar exists to deliver outcomes —
+            <br />
+            with control and consistency.
+          </p>
+        </div>
+
+        {/* Right execution blocks */}
+       <div className="md:col-span-8 space-y-20 mt-4">
+
+          {/* Design */}
+          <div className="max-w-xl pb-8">
+            <h3 className="text-xl font-medium">
+              Design Execution
+            </h3>
+            <p className="mt-4 text-[var(--grox-gray)] leading-relaxed">
+              Visual systems, thumbnails, and brand assets executed with clarity
+              and consistency — not scattered design tasks.
             </p>
           </div>
 
-          <div>
-            <h3 className="text-xl font-medium">Development</h3>
-            <p className="mt-4 text-[var(--grox-gray)]">
-              Websites and interfaces engineered for performance and scale.
+          {/* Development */}
+          <div className="max-w-xl pb-8">
+            <h3 className="text-xl font-medium">
+              Development Execution
+            </h3>
+            <p className="mt-4 text-[var(--grox-gray)] leading-relaxed">
+              Websites and interfaces built as systems — structured, scalable,
+              and engineered to perform beyond launch.
             </p>
           </div>
 
-          <div>
-            <h3 className="text-xl font-medium">Content</h3>
-            <p className="mt-4 text-[var(--grox-gray)]">
-              Video edits and reels optimized for attention and delivery.
+          {/* Content */}
+          <div className="max-w-xl pb-8">
+            <h3 className="text-xl font-medium">
+              Content Execution
+            </h3>
+            <p className="mt-4 text-[var(--grox-gray)] leading-relaxed">
+              Short-form edits and videos produced with speed, consistency, and
+              delivery discipline — not creator chaos.
             </p>
           </div>
+
         </div>
       </div>
     </section>

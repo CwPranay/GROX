@@ -6,8 +6,7 @@ export default function Navbar() {
           
           {/* Brand */}
           <div className="text-lg font-semibold tracking-wide">
-            <span className="text-white">GRO</span>
-            <span style={{ color: "var(--grox-red)" }}>X</span>
+            <img width="80px" src="./grox.png" alt="" />
           </div>
 
           {/* Nav */}
