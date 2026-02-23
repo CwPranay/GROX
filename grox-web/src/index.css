@@ -14,11 +14,26 @@ html {
 body {
   color: white;
   font-family: "Inter", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Mobile typography improvements */
+@media (max-width: 768px) {
+  body {
+    font-size: 15px;
+  }
 }
 
 /* Subtle premium scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
+}
+
+@media (max-width: 768px) {
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
 }
 
 ::-webkit-scrollbar-track {
