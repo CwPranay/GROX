@@ -7,14 +7,12 @@ export default function WhyGrox() {
         <div className="md:col-span-4">
           <h2 className="text-3xl md:text-4xl font-semibold leading-tight">
             Why This
-            <br />
-            Works
+            Model Works
           </h2>
         </div>
 
-        {/* Right: Reasoning */}
         <div className="md:col-span-8 max-w-3xl space-y-10">
-          
+
           <p className="text-[var(--grox-gray)] leading-relaxed">
             GROX is built as an execution system.
             Not a freelancer network.
@@ -27,9 +25,9 @@ export default function WhyGrox() {
             You don’t follow up endlessly.
           </p>
 
-          <p className="text-[var(--grox-gray)] leading-relaxed">
+          <p className="text-[var(--grox-gray)] leading-relaxed mt-14">
             You submit work.
-            We execute it — with structure, speed, and accountability.
+            We take ownership — with structure, speed, and accountability.
           </p>
 
         </div>
