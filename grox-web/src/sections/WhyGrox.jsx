@@ -7,7 +7,7 @@ export default function WhyGrox() {
           font-size: 9px;
           letter-spacing: 0.22em;
           text-transform: uppercase;
-         color: #6a6a6a;
+          color: #6a6a6a;
         }
 
         .why-h2 {
@@ -23,26 +23,33 @@ export default function WhyGrox() {
         .why-rejection {
           font-family: 'Barlow Condensed', sans-serif;
           font-weight: 700;
-          font-size: clamp(1.3rem, 3vw, 1.75rem);
+          font-size: 1.4rem;
           text-transform: uppercase;
-          letter-spacing: 0.01em;
+          letter-spacing: 0.02em;
           line-height: 1.1;
-          color: #242424;
+          color: #7a7a7a;
+          opacity: 0.75;
+          transition: all 0.2s ease;
+        }
+
+        .why-rejection:hover {
+          opacity: 1;
         }
 
         .why-rejection-strike {
           position: relative;
           display: inline-block;
-          color: #2e2e2e;
+          color: #5a5a5a;
         }
+
         .why-rejection-strike::after {
           content: '';
           position: absolute;
           left: 0;
           top: 50%;
           width: 100%;
-          height: 1px;
-          background: rgba(220,38,38,0.3);
+          height: 1.5px;
+          background: rgba(220,38,38,0.6);
           transform: translateY(-50%);
         }
 
@@ -50,7 +57,7 @@ export default function WhyGrox() {
           font-family: 'DM Sans', sans-serif;
           font-size: 13.5px;
           line-height: 1.85;
-         color: #6a6a6a;
+          color: #6a6a6a;
         }
 
         .why-strong-line {
@@ -58,17 +65,22 @@ export default function WhyGrox() {
           font-size: 15px;
           font-weight: 500;
           line-height: 1.7;
-          color: #6a6a6a;
+          color: #5a5a5a;
         }
 
         .why-resolution {
           font-family: 'Barlow Condensed', sans-serif;
           font-weight: 800;
-          font-size: clamp(1.6rem, 4vw, 2.4rem);
+          font-size: clamp(1.8rem, 4vw, 2.6rem);
           text-transform: uppercase;
-          letter-spacing: -0.01em;
-          line-height: 1;
+          line-height: 0.9;
+          letter-spacing: -0.02em;
           color: #e0e0e0;
+          transition: transform 0.2s ease;
+        }
+
+        .why-resolution:hover {
+          transform: translateY(-2px);
         }
 
         .why-resolution span {
@@ -78,9 +90,18 @@ export default function WhyGrox() {
         .why-footnote {
           font-family: 'DM Mono', monospace;
           font-size: 9.5px;
-          letter-spacing: 0.16em;
+          letter-spacing: 0.2em;
           text-transform: uppercase;
-          color: #6a6a6a;
+          color: #8a8a8a;
+        }
+
+        .why-verdict {
+          font-family: 'Barlow Condensed', sans-serif;
+          font-weight: 800;
+          font-size: 1.4rem;
+          letter-spacing: 0.02em;
+          color: #dc2626;
+          text-shadow: 0 0 12px rgba(220,38,38,0.2);
         }
       `}</style>
 
@@ -94,10 +115,10 @@ export default function WhyGrox() {
       >
         <div className="max-w-[1200px] mx-auto px-5 sm:px-10 lg:px-20">
 
-          {/* ── Header row ── */}
-          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-16 sm:mb-24">
+          {/* Header */}
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-16 sm:mb-20">
             <div>
-              <div className="flex items-center gap-3 mb-5">
+              <div className="flex items-center gap-3 mb-3">
                 <span className="block w-6 h-px" style={{ background: "#dc2626" }} />
                 <p className="why-section-label">The Model</p>
               </div>
@@ -108,10 +129,9 @@ export default function WhyGrox() {
             </div>
           </div>
 
-          {/* ── Main content — 2 col desktop ── */}
-          <div className="grid md:grid-cols-12 gap-0 md:gap-20">
+          <div className="grid md:grid-cols-12 gap-0 md:gap-16">
 
-            {/* Left col — rejection statements */}
+            {/* Left */}
             <div className="md:col-span-5 mb-14 md:mb-0">
 
               <p className="why-body mb-8">
@@ -119,7 +139,6 @@ export default function WhyGrox() {
                 GROX gives you access to output.
               </p>
 
-              {/* Struck-through rejections */}
               <div
                 className="flex flex-col gap-3 mb-10 pl-4"
                 style={{ borderLeft: "1px solid rgba(255,255,255,0.04)" }}
@@ -135,24 +154,28 @@ export default function WhyGrox() {
                 </p>
               </div>
 
-              <p className="why-body" style={{ color: "#282828" }}>
+              <p className="why-verdict mt-3">
                 None of the above.
               </p>
             </div>
 
-            {/* Right col — the actual model */}
-            <div className="md:col-span-7 flex flex-col justify-between gap-12">
+            {/* Right */}
+            <div className="md:col-span-7 flex flex-col justify-between gap-8">
 
-              {/* Problem block */}
               <div>
                 <p
                   className="why-body mb-1"
-                  style={{ color: "#252525", fontSize: "10px", fontFamily: "'DM Mono', monospace", letterSpacing: "0.18em", textTransform: "uppercase" }}
+                  style={{
+                    color: "#5a5a5a",
+                    fontSize: "10px",
+                    fontFamily: "'DM Mono', monospace",
+                    letterSpacing: "0.18em",
+                    textTransform: "uppercase"
+                  }}
                 >
                   The problem with most agencies
                 </p>
-                <div
-                  className="h-px mb-5"
+                <div className="h-px mb-3"
                   style={{ background: "rgba(255,255,255,0.04)" }}
                 />
                 <p className="why-strong-line">
@@ -162,30 +185,45 @@ export default function WhyGrox() {
                 </p>
               </div>
 
-              {/* Divider with label */}
               <div className="flex items-center gap-4">
-                <div className="flex-1 h-px" style={{ background: "rgba(255,255,255,0.04)" }} />
+                <div className="flex-1 h-px"
+                  style={{
+                    background: "linear-gradient(to right, transparent, rgba(220,38,38,0.4), transparent)",
+                    height: "1.5px"
+                  }}
+                />
                 <p className="why-footnote">GROX is different</p>
-                <div className="w-8 h-px" style={{ background: "rgba(220,38,38,0.3)" }} />
+                <div className="w-8 h-px"
+                  style={{
+                    background: "linear-gradient(to right, transparent, rgba(220,38,38,0.4), transparent)",
+                    height: "1.5px"
+                  }}
+                />
               </div>
 
-              {/* Resolution */}
               <div>
                 <p
-                  className="why-body mb-4"
-                  style={{ color: "#252525", fontSize: "10px", fontFamily: "'DM Mono', monospace", letterSpacing: "0.18em", textTransform: "uppercase" }}
+                  className="why-body mb-3"
+                  style={{
+                    color: "#5a5a5a",
+                    fontSize: "10px",
+                    fontFamily: "'DM Mono', monospace",
+                    letterSpacing: "0.18em",
+                    textTransform: "uppercase"
+                  }}
                 >
                   How it actually works
                 </p>
-                <div
-                  className="h-px mb-6"
-                  style={{ background: "rgba(255,255,255,0.04)" }}
+                <div className="h-px mb-6"
+                  style={{
+                    background: "linear-gradient(to right, transparent, rgba(220,38,38,0.25), transparent)"
+                  }}
                 />
                 <p className="why-resolution mb-4">
                   You submit.<br />
                   <span>We own it.</span>
                 </p>
-                <p className="why-body mt-6" style={{ maxWidth: "400px" }}>
+                <p className="why-body mt-6" style={{ maxWidth: "380px" }}>
                   Structure, speed, and accountability — built into the system.
                   Not promised. Not managed by you.
                   Just how it runs.
@@ -195,15 +233,22 @@ export default function WhyGrox() {
             </div>
           </div>
 
-          {/* ── Footer ── */}
+          {/* Footer */}
           <div
             className="flex items-center gap-4 mt-20 sm:mt-24"
-            style={{ borderTop: "1px solid rgba(255,255,255,0.04)", paddingTop: "24px" }}
+            style={{
+              borderTop: "1px solid rgba(255,255,255,0.04)",
+              paddingTop: "24px"
+            }}
           >
-            <span className="why-footnote">Built to remove you from the process</span>
+            <span className="why-footnote">
+              Built to remove you from the process
+            </span>
             <div
               className="flex-1 h-px"
-              style={{ background: "linear-gradient(to right, rgba(220,38,38,0.2), transparent)" }}
+              style={{
+                background: "linear-gradient(to right, rgba(220,38,38,0.35), transparent)"
+              }}
             />
           </div>
 
