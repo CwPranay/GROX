@@ -183,7 +183,7 @@ export default function Navbar() {
   {/* Nav links — top-anchored, minimal */}
   <div className="flex flex-col px-5 pt-8 flex-1" style={{ gap: 0 }}>
     {[
-      { href: "/home", label: "Home"  },
+      { href: "/", label: "Home"  },
       { href: "/work",      label: "Execution"  },
       { href: "#process",  label: "Process"   },
     ].map(({ href, label }, i, arr) => (
