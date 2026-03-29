@@ -277,7 +277,7 @@ export default function Hero() {
               <button className="cta-btn">
                 Request Execution
               </button>
-              <a href="#work" className="cta-link">
+              <a href="/work" className="cta-link">
                 See our work
                 <span className="cta-arrow">{"→"}</span>
               </a>

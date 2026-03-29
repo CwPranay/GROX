@@ -15,8 +15,8 @@ export default function Navbar() {
   }, [mobileMenuOpen]);
 
   const navLinks = [
-    { href: "#services", label: "Services", num: "01" },
-    { href: "#why", label: "Why GROX", num: "02" },
+    { href: "/", label: "Home", num: "01" },
+    { href: "/work", label: "Execution", num: "02" },
     { href: "#process", label: "Process", num: "03" },
   ];
 
