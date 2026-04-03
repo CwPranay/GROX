@@ -17,7 +17,7 @@ export default function Navbar() {
   const navLinks = [
     { href: "/", label: "Home", num: "01" },
     { href: "/work", label: "Execution", num: "02" },
-    { href: "#process", label: "Process", num: "03" },
+    { href: "/request", label: "Request Execution", num: "03" },
   ];
 
   return (
@@ -185,7 +185,7 @@ export default function Navbar() {
     {[
       { href: "/", label: "Home"  },
       { href: "/work",      label: "Execution"  },
-      { href: "#process",  label: "Process"   },
+      { href: "/Request",  label: "Request Execution"   },
     ].map(({ href, label }, i, arr) => (
       <div key={href}>
         <a

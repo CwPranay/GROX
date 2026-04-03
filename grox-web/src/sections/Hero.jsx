@@ -274,9 +274,9 @@ export default function Hero() {
 
             {/* CTA block */}
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 sm:gap-7 mb-10 sm:mb-12 lg:mb-0">
-              <button className="cta-btn">
+              <a href="/request" className="cta-btn">
                 Request Execution
-              </button>
+              </a>
               <a href="/work" className="cta-link">
                 See our work
                 <span className="cta-arrow">{"→"}</span>
