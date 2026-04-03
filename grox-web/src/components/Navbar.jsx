@@ -30,9 +30,12 @@ export default function Navbar() {
           letter-spacing: 0.2em;
           color: #9a9a9a;
           text-transform: uppercase;
-          transition: color 0.2s ease;
+          transition: all 0.2s ease;
         }
-        .nav-link:hover { color: #fff; }
+        .nav-link:hover { 
+          color: #fff;
+          transform: translateY(-1px);
+        }
         .nav-link::after {
           content: "";
           position: absolute;
@@ -58,6 +61,7 @@ export default function Navbar() {
         .login-btn:hover {
           background: #b91c1c;
           box-shadow: 0 0 18px rgba(220,38,38,0.4);
+          transform: translateY(-2px);
         }
 
         .burger span {

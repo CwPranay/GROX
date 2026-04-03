@@ -1,5 +1,10 @@
+import { motion } from "framer-motion";
+import { useScrollAnimation } from "../hooks/useScrollAnimation";
 
 export default function SelectedWork() {
+  const [headerRef, headerVisible] = useScrollAnimation();
+  const [projectsRef, projectsVisible] = useScrollAnimation();
+
   const projects = [
     {
       index: "01",
@@ -206,7 +211,13 @@ export default function SelectedWork() {
         <div className="max-w-[1200px] mx-auto px-5 sm:px-10 lg:px-20">
 
           {/* Header */}
-          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-14 sm:mb-20">
+          <motion.div 
+            ref={headerRef}
+            initial={{ opacity: 0, y: 20 }}
+            animate={headerVisible ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+            className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-14 sm:mb-20"
+          >
             <div>
               <div className="flex items-center gap-3 mb-5">
                 <span className="block w-6 h-px" style={{ background: "#dc2626" }} />
@@ -221,10 +232,15 @@ export default function SelectedWork() {
               Work that shipped. Systems that run.
               No concepts — only delivered output.
             </p>
-          </div>
+          </motion.div>
 
           {/* Projects */}
-          <div>
+          <motion.div
+            ref={projectsRef}
+            initial={{ opacity: 0, y: 20 }}
+            animate={projectsVisible ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          >
             {projects.map((project, i) => {
               const Tag = project.href ? "a" : "div";
               const tagProps = project.href ? { href: project.href } : {};
@@ -271,7 +287,7 @@ export default function SelectedWork() {
                 </div>
               );
             })}
-          </div>
+          </motion.div>
 
           {/* Footer */}
           <div className="flex items-center justify-between mt-12 sm:mt-14 pt-6 border-t border-white/5">

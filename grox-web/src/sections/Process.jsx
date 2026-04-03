@@ -1,4 +1,10 @@
+import { motion } from "framer-motion";
+import { useScrollAnimation } from "../hooks/useScrollAnimation";
+
 export default function Process() {
+    const [headerRef, headerVisible] = useScrollAnimation();
+    const [flowRef, flowVisible] = useScrollAnimation();
+
     const steps = [
         {
             index: "01",
@@ -151,7 +157,13 @@ export default function Process() {
                 <div className="max-w-[1200px] mx-auto px-5 sm:px-10 lg:px-20">
 
                     {/* ── Section header ── */}
-                    <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-8 mb-16 sm:mb-20">
+                    <motion.div 
+                        ref={headerRef}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={headerVisible ? { opacity: 1, y: 0 } : {}}
+                        transition={{ duration: 0.7, ease: "easeOut" }}
+                        className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-8 mb-16 sm:mb-20"
+                    >
                         <div>
                             <div className="flex items-center gap-3 mb-5">
                                 <span className="block w-6 h-px" style={{ background: "#dc2626" }} />
@@ -168,10 +180,16 @@ export default function Process() {
                             A flow that runs without friction —
                             from intake to delivery.
                         </p>
-                    </div>
+                    </motion.div>
 
                     {/* ── Desktop flow — staggered asymmetric ── */}
-                    <div className="hidden md:block">
+                    <motion.div 
+                        ref={flowRef}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={flowVisible ? { opacity: 1, y: 0 } : {}}
+                        transition={{ duration: 0.6, ease: "easeOut" }}
+                        className="hidden md:block"
+                    >
                         <div className="relative">
 
                             {/* Horizontal thread line */}
@@ -242,10 +260,16 @@ export default function Process() {
 
                             </div>
                         </div>
-                    </div>
+                    </motion.div>
 
                     {/* ── Mobile flow — vertical stagger ── */}
-                    <div className="md:hidden flex flex-col">
+                    <motion.div 
+                        ref={flowRef}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={flowVisible ? { opacity: 1, y: 0 } : {}}
+                        transition={{ duration: 0.6, ease: "easeOut" }}
+                        className="md:hidden flex flex-col"
+                    >
                         {steps.map((step, i) => (
                             <div key={step.index}>
                                 <div
@@ -289,7 +313,7 @@ export default function Process() {
                                 )}
                             </div>
                         ))}
-                    </div>
+                    </motion.div>
 
                     {/* ── Footer line ── */}
                     <div

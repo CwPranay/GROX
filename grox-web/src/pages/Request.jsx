@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { CustomSelect } from "../CustomSelect"
 
 const FONT_URL =
@@ -155,12 +156,13 @@ export default function Request() {
   cursor: pointer;
   padding: 17px 36px;
   clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%);
-  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 .rq-btn:hover:not(:disabled) {
   background: #e02626;
   box-shadow: 0 0 32px rgba(255,46,46,0.35);
+  transform: translateY(-2px);
 }
 
 .rq-btn:disabled {
@@ -224,7 +226,12 @@ export default function Request() {
                 <div className="max-w-[900px] mx-auto px-5 sm:px-10 lg:px-16">
 
                     {/* ── Page header ── */}
-                    <div style={{ paddingTop: "clamp(5rem, 12vw, 8rem)", paddingBottom: "clamp(3rem, 7vw, 5rem)" }}>
+                    <motion.div 
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.7, ease: "easeOut" }}
+                        style={{ paddingTop: "clamp(5rem, 12vw, 8rem)", paddingBottom: "clamp(3rem, 7vw, 5rem)" }}
+                    >
 
                         {/* Eyebrow */}
                         <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "28px" }}>
@@ -288,15 +295,23 @@ export default function Request() {
                             </p>
                         </div>
 
-                    </div>
+                    </motion.div>
 
                     <div className="rq-divider" />
 
                     {/* ── Form / Success ── */}
+                    <AnimatePresence mode="wait">
                     {submitted ? (
 
                         /* ── SUCCESS STATE ── */
-                        <div style={{ paddingBottom: "clamp(4rem, 10vw, 7rem)" }}>
+                        <motion.div 
+                            key="success"
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -20 }}
+                            transition={{ duration: 0.6, ease: "easeOut" }}
+                            style={{ paddingBottom: "clamp(4rem, 10vw, 7rem)" }}
+                        >
                             <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "32px" }}>
                                 <span style={{
                                     width: "6px", height: "6px",
@@ -352,15 +367,26 @@ export default function Request() {
                             <button className="rq-btn-ghost" onClick={reset}>
                                 {"←"} Submit another request
                             </button>
-                        </div>
+                        </motion.div>
 
                     ) : (
 
                         /* ── FORM ── */
-                        <form onSubmit={handleSubmit} noValidate>
+                        <motion.form 
+                            key="form"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.4, ease: "easeOut" }}
+                            onSubmit={handleSubmit} 
+                            noValidate
+                        >
 
                             {/* Row group: Name + Email */}
-                            <div
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
                                 className="grid grid-cols-1 sm:grid-cols-2"
                                 style={{ gap: "clamp(2rem, 5vw, 4rem)", marginBottom: "clamp(2rem, 5vw, 3.5rem)" }}
                             >
@@ -400,10 +426,13 @@ export default function Request() {
                                     />
                                     {errors.email && <span className="rq-error-label">{errors.email}</span>}
                                 </div>
-                            </div>
+                            </motion.div>
 
                             {/* Row group: Phone + Project Type */}
-                            <div
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
                                 className="grid grid-cols-1 sm:grid-cols-2"
                                 style={{ gap: "clamp(2rem, 5vw, 4rem)", marginBottom: "clamp(2rem, 5vw, 3.5rem)" }}
                             >
@@ -445,10 +474,15 @@ export default function Request() {
                                     />
                                     {errors.projectType && <span className="rq-error-label">{errors.projectType}</span>}
                                 </div>
-                            </div>
+                            </motion.div>
 
                             {/* Description */}
-                            <div style={{ marginBottom: "clamp(2rem, 5vw, 3.5rem)" }}>
+                            <motion.div 
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+                                style={{ marginBottom: "clamp(2rem, 5vw, 3.5rem)" }}
+                            >
                                 <label className="rq-label" htmlFor="description">
                                     What needs to be executed
                                 </label>
@@ -462,10 +496,13 @@ export default function Request() {
                                     rows={5}
                                 />
                                 {errors.description && <span className="rq-error-label">{errors.description}</span>}
-                            </div>
+                            </motion.div>
 
                             {/* Row group: Timeline + Budget */}
-                            <div
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
                                 className="grid grid-cols-1 sm:grid-cols-2"
                                 style={{ gap: "clamp(2rem, 5vw, 4rem)", marginBottom: "clamp(2.5rem, 6vw, 4.5rem)" }}
                             >
@@ -508,13 +545,16 @@ export default function Request() {
                                         ]}
                                     />
                                 </div>
-                            </div>
+                            </motion.div>
 
                             {/* Divider */}
                             <div className="rq-section-divider" />
 
                             {/* Submit row */}
-                            <div
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
                                 style={{
                                     display: "flex",
                                     flexDirection: "column",
@@ -553,11 +593,12 @@ export default function Request() {
                                 }}>
                                     We don't share your information. Ever.
                                 </p>
-                            </div>
+                            </motion.div>
 
-                        </form>
+                        </motion.form>
 
                     )}
+                    </AnimatePresence>
                 </div>
             </div>
         </>

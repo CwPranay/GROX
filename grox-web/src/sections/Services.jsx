@@ -1,4 +1,12 @@
+import { motion } from "framer-motion";
+import { useScrollAnimation } from "../hooks/useScrollAnimation";
+
 export default function Services() {
+  const [headerRef, headerVisible] = useScrollAnimation();
+  const [layer1Ref, layer1Visible] = useScrollAnimation();
+  const [layer2Ref, layer2Visible] = useScrollAnimation();
+  const [layer3Ref, layer3Visible] = useScrollAnimation();
+
   return (
     <>
       <style>{`
@@ -122,7 +130,13 @@ export default function Services() {
         <div className="max-w-[1200px] mx-auto px-5 sm:px-10 lg:px-20">
 
           {/* Header */}
-          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-16 sm:mb-20">
+          <motion.div 
+            ref={headerRef}
+            initial={{ opacity: 0, y: 20 }}
+            animate={headerVisible ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+            className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-16 sm:mb-20"
+          >
             <div>
               <div className="flex items-center gap-3 mb-5">
                 <span className="block w-6 h-px" style={{ background: "#dc2626" }} />
@@ -136,7 +150,7 @@ export default function Services() {
             <p className="svc-anchor-body" style={{ maxWidth: "280px" }}>
               Not a service list. Three execution layers — each one built to deliver outcomes with structure and control.
             </p>
-          </div>
+          </motion.div>
 
           {/* Layout */}
           <div className="grid md:grid-cols-12">
@@ -148,7 +162,13 @@ export default function Services() {
             <div className="md:col-span-11 flex flex-col">
 
               {/* Layer 1 */}
-              <div className="svc-row grid md:grid-cols-12 py-12 border-b border-white/5">
+              <motion.div 
+                ref={layer1Ref}
+                initial={{ opacity: 0, y: 20 }}
+                animate={layer1Visible ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+                className="svc-row grid md:grid-cols-12 py-12 border-b border-white/5"
+              >
                 <div className="md:col-span-3">
                   <p className="svc-tag-active mb-4">Layer 01</p>
                 </div>
@@ -167,10 +187,16 @@ export default function Services() {
                     Brand identity. UI design. Marketing assets. Visual systems that scale.
                   </p>
                 </div>
-              </div>
+              </motion.div>
 
               {/* Layer 2 */}
-              <div className="svc-row grid md:grid-cols-12 py-10 border-b border-white/5">
+              <motion.div 
+                ref={layer2Ref}
+                initial={{ opacity: 0, y: 20 }}
+                animate={layer2Visible ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+                className="svc-row grid md:grid-cols-12 py-10 border-b border-white/5"
+              >
                 <div className="md:col-span-3">
                   <p className="svc-tag mb-4">Layer 02</p>
                 </div>
@@ -189,10 +215,16 @@ export default function Services() {
                     Web builds. Landing pages. Component systems. Interfaces that hold up.
                   </p>
                 </div>
-              </div>
+              </motion.div>
 
               {/* Layer 3 */}
-              <div className="svc-row grid md:grid-cols-12 py-10">
+              <motion.div 
+                ref={layer3Ref}
+                initial={{ opacity: 0, y: 20 }}
+                animate={layer3Visible ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+                className="svc-row grid md:grid-cols-12 py-10"
+              >
                 <div className="md:col-span-3">
                   <p className="svc-tag mb-4">Layer 03</p>
                 </div>
@@ -211,7 +243,7 @@ export default function Services() {
                     Reels. Edits. Thumbnails. Content at volume.
                   </p>
                 </div>
-              </div>
+              </motion.div>
 
             </div>
           </div>

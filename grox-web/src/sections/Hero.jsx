@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 
 const FONT_URL =
   "https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500&display=swap";
@@ -104,7 +105,7 @@ export default function Hero() {
           text-transform: uppercase;
           padding: 17px 40px;
           clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%);
-          transition: background-color 0.2s ease, box-shadow 0.2s ease;
+          transition: all 0.2s ease;
           box-shadow: 0 0 0 rgba(220,38,38,0);
           border: none;
           cursor: pointer;
@@ -122,6 +123,7 @@ export default function Hero() {
         .cta-btn:hover {
           background-color: #b91c1c;
           box-shadow: 0 0 28px rgba(220,38,38,0.28), 0 0 8px rgba(220,38,38,0.15);
+          transform: translateY(-2px);
         }
 
         .cta-link {
@@ -215,7 +217,12 @@ export default function Hero() {
           <div className="flex-1 w-full lg:max-w-[560px]">
 
             {/* Eyebrow */}
-            <div className="flex items-center gap-3 mb-6 sm:mb-8 lg:mb-10">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              className="flex items-center gap-3 mb-6 sm:mb-8 lg:mb-10"
+            >
               <span
                 aria-hidden="true"
                 className="block w-6 sm:w-7 h-px flex-shrink-0"
@@ -227,7 +234,7 @@ export default function Hero() {
               >
                 Creative Execution Company
               </p>
-            </div>
+            </motion.div>
 
             {/* Headline */}
             <h1
@@ -239,23 +246,43 @@ export default function Hero() {
                 letterSpacing: "-0.01em",
               }}
             >
-              BUILT TO
-              <br />
-              <span style={{ color: "#dc2626" }}>EXECUTE.</span>
+              <motion.span
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
+                style={{ display: "block" }}
+              >
+                BUILT TO
+              </motion.span>
+              <motion.span
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
+                style={{ color: "#dc2626", display: "block" }}
+              >
+                EXECUTE.
+              </motion.span>
             </h1>
 
             {/* Divider */}
-            <div
+            <motion.div
+              initial={{ opacity: 0, scaleX: 0 }}
+              animate={{ opacity: 1, scaleX: 1 }}
+              transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
               aria-hidden="true"
               className="h-px mb-5 sm:mb-7 lg:mb-8"
               style={{
                 background: "linear-gradient(to right, rgba(220,38,38,0.45), rgba(255,255,255,0.05) 50%, transparent)",
                 maxWidth: "380px",
+                transformOrigin: "left",
               }}
             />
 
             {/* Body copy */}
-            <p
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
               className="text-[13px] sm:text-[15px] leading-[1.8] mb-8 sm:mb-10 lg:mb-12"
               style={{
                 color: "#606060",
@@ -270,10 +297,15 @@ export default function Hero() {
               <span style={{ color: "#909090" }}>
                 You hand us the brief — we ship the result.
               </span>
-            </p>
+            </motion.p>
 
             {/* CTA block */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 sm:gap-7 mb-10 sm:mb-12 lg:mb-0">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
+              className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 sm:gap-7 mb-10 sm:mb-12 lg:mb-0"
+            >
               <a href="/request" className="cta-btn">
                 Request Execution
               </a>
@@ -281,10 +313,13 @@ export default function Hero() {
                 See our work
                 <span className="cta-arrow">{"→"}</span>
               </a>
-            </div>
+            </motion.div>
 
             {/* Stat strip — grid on mobile, row on desktop */}
-            <div
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
               className="grid grid-cols-3 sm:flex sm:flex-row sm:gap-10 gap-0 mt-8 sm:mt-14 lg:mt-16 pt-6 sm:pt-8"
               style={{ borderTop: "1px solid rgba(255,255,255,0.045)" }}
             >
@@ -303,11 +338,14 @@ export default function Hero() {
                   <p className="stat-label">{s.label}</p>
                 </div>
               ))}
-            </div>
+            </motion.div>
           </div>
 
           {/* Right — ghost wordmark (desktop only) */}
-          <div
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.4, ease: "easeOut" }}
             aria-hidden="true"
             className="hidden lg:flex flex-1 justify-center items-center relative"
             style={{ minHeight: "400px" }}
@@ -323,7 +361,7 @@ export default function Hero() {
               }}
             />
             <p className="ghost-text relative">GROX</p>
-          </div>
+          </motion.div>
 
         </div>
       </section>

@@ -1,4 +1,11 @@
+import { motion } from "framer-motion";
+import { useScrollAnimation } from "../hooks/useScrollAnimation";
+
 export default function WhyGrox() {
+  const [headerRef, headerVisible] = useScrollAnimation();
+  const [leftRef, leftVisible] = useScrollAnimation();
+  const [rightRef, rightVisible] = useScrollAnimation();
+
   return (
     <>
       <style>{`
@@ -116,7 +123,13 @@ export default function WhyGrox() {
         <div className="max-w-[1200px] mx-auto px-5 sm:px-10 lg:px-20">
 
           {/* Header */}
-          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-16 sm:mb-20">
+          <motion.div 
+            ref={headerRef}
+            initial={{ opacity: 0, y: 20 }}
+            animate={headerVisible ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+            className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-16 sm:mb-20"
+          >
             <div>
               <div className="flex items-center gap-3 mb-3">
                 <span className="block w-6 h-px" style={{ background: "#dc2626" }} />
@@ -127,12 +140,18 @@ export default function WhyGrox() {
                 <span style={{ color: "#dc2626" }}>Model Works</span>
               </h2>
             </div>
-          </div>
+          </motion.div>
 
           <div className="grid md:grid-cols-12 gap-0 md:gap-16">
 
             {/* Left */}
-            <div className="md:col-span-5 mb-14 md:mb-0">
+            <motion.div 
+              ref={leftRef}
+              initial={{ opacity: 0, y: 20 }}
+              animate={leftVisible ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              className="md:col-span-5 mb-14 md:mb-0"
+            >
 
               <p className="why-body mb-8">
                 Most agencies give you access to people.<br />
@@ -157,10 +176,16 @@ export default function WhyGrox() {
               <p className="why-verdict mt-3">
                 None of the above.
               </p>
-            </div>
+            </motion.div>
 
             {/* Right */}
-            <div className="md:col-span-7 flex flex-col justify-between gap-8">
+            <motion.div 
+              ref={rightRef}
+              initial={{ opacity: 0, y: 20 }}
+              animate={rightVisible ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
+              className="md:col-span-7 flex flex-col justify-between gap-8"
+            >
 
               <div>
                 <p
@@ -230,7 +255,7 @@ export default function WhyGrox() {
                 </p>
               </div>
 
-            </div>
+            </motion.div>
           </div>
 
           {/* Footer */}
