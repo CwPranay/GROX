@@ -1,34 +1,51 @@
-import { Resend } from "resend";
+import { Resend } from "resend"
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 export default async function handler(req, res) {
-  console.log("API HIT");
+    if (req.method != "POST") {
+        return res.status(405).json({ message: "METHOD NOT ALLOWED" })
+    }
+    try {
+        const data = typeof req.body === "string" ? JSON.parse(req.body) : req.body;
 
-  if (req.method !== "POST") {
-    return res.status(405).json({ message: "METHOD NOT ALLOWED" });
-  }
+        const {
+            name,
+            email,
+            phone,
+            projectType,
+            description,
+            timeline,
+            budget,
+        } = data;
 
-  try {
-    console.log("BODY:", req.body);
+        if (!name || !email || !projectType || !description || !timeline) {
+            return res.status(400).json({ message: "Missing required fields" });
+        }
 
-    const data =
-      typeof req.body === "string" ? JSON.parse(req.body) : req.body;
+        const response = await resend.emails.send({
+            from: "grox onboarding@resend.dev",
+            to: ['groxindia.business@gmail.com'],
+            subject: "New GROX Request",
+            html: `<h2>New Request</h2>
 
-    console.log("PARSED DATA:", data);
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Phone:</strong> ${phone || "N/A"}</p>
+        <p><strong>Project Type:</strong> ${projectType}</p>
+        <p><strong>Timeline:</strong> ${timeline}</p>
+        <p><strong>Budget:</strong> ${budget || "Not specified"}</p>
 
-    const response = await resend.emails.send({
-      from: "onboarding@resend.dev",
-      to: "yourpersonal@gmail.com",
-      subject: "TEST EMAIL",
-      text: "Testing Resend connection",
-    });
+        <hr />
 
-    console.log("RESEND RESPONSE:", response);
-
-    return res.status(200).json({ success: true });
-  } catch (err) {
-    console.error("ERROR:", err);
-    return res.status(500).json({ message: "Something went wrong" });
-  }
+        <p><strong>Description:</strong></p>
+        <p>${description}</p>`
+        })
+        console.log("RESEND RESPONSE:", response);
+        return res.status(200).json({ success: true });
+    }
+    catch (err) {
+        console.error("ERROR:", err);
+        return res.status(500).json({ message: "Something went wrong" });
+    }
 }
