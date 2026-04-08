@@ -7,6 +7,8 @@ export default async function handler(req, res) {
         return res.status(405).json({ message: "METHOD NOT ALLOWED" })
     }
     try {
+        const data = typeof req.body === "string" ? JSON.parse(req.body) : req.body;
+
         const {
             name,
             email,
@@ -15,12 +17,13 @@ export default async function handler(req, res) {
             description,
             timeline,
             budget,
-        } = req.body;
+        } = data;
+
         if (!name || !email || !projectType || !description || !timeline) {
             return res.status(400).json({ message: "Missing required fields" });
         }
 
-        await resend.emails.send({
+        const response = await resend.emails.send({
             from: "GROX <onboarding@resend.dev>",
             to: "groxindia.business@gmail.com",
             subject: "New GROX Request",
@@ -38,6 +41,7 @@ export default async function handler(req, res) {
         <p><strong>Description:</strong></p>
         <p>${description}</p>`
         })
+        console.log("RESEND RESPONSE:", response);
         return res.status(200).json({ success: true });
     }
     catch (err) {
