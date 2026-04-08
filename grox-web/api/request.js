@@ -24,7 +24,7 @@ export default async function handler(req, res) {
         }
 
         const response = await resend.emails.send({
-            from: "grox onboarding@resend.dev",
+            from: "onboarding@resend.dev",
             to: ['groxindia.business@gmail.com'],
             subject: "New GROX Request",
             html: `<h2>New Request</h2>
