@@ -28,7 +28,7 @@ export default function Navbar() {
           font-family: 'DM Mono', monospace;
           font-size: 11px;
           letter-spacing: 0.2em;
-          color: #9a9a9a;
+          color: #b0b0b0;
           text-transform: uppercase;
           transition: all 0.2s ease;
         }
@@ -67,7 +67,7 @@ export default function Navbar() {
         .burger span {
           display: block;
           height: 1px;
-          background: #aaa;
+          background: #b0b0b0;
           margin: 6px 0;
           transition: 0.2s;
         }
@@ -130,9 +130,9 @@ export default function Navbar() {
             {/* Right */}
             <div className="flex items-center gap-6">
               {/* Login FIXED */}
-              <a href="/login" className="login-btn hidden md:block">
+              {/* <a href="/login" className="login-btn hidden md:block">
                 Login
-              </a>
+              </a> */}
 
               {/* Mobile menu */}
               <button
@@ -171,13 +171,13 @@ export default function Navbar() {
     >
       <span style={{
         position: "absolute", top: "50%", left: "50%",
-        width: "16px", height: "1px", background: "#3a3a3a",
+        width: "16px", height: "1px", background: "#666666",
         transform: "translate(-50%, -50%) rotate(45deg)",
         transition: "background 0.18s ease",
       }} />
       <span style={{
         position: "absolute", top: "50%", left: "50%",
-        width: "16px", height: "1px", background: "#3a3a3a",
+        width: "16px", height: "1px", background: "#666666",
         transform: "translate(-50%, -50%) rotate(-45deg)",
         transition: "background 0.18s ease",
       }} />
@@ -202,17 +202,17 @@ export default function Navbar() {
             fontWeight: 500,
             letterSpacing: "0.2em",
             textTransform: "uppercase",
-            color: "#9a9a9a",
+            color: "#b0b0b0",
             textDecoration: "none",
             padding: "16px 0",
             transition: "color 0.18s ease, padding-left 0.2s ease",
           }}
           onMouseEnter={e => {
-            e.currentTarget.style.color = "#c8c8c8";
+            e.currentTarget.style.color = "#ffffff";
             e.currentTarget.style.paddingLeft = "6px";
           }}
           onMouseLeave={e => {
-            e.currentTarget.style.color = "#2e2e2e";
+            e.currentTarget.style.color = "#b0b0b0";
             e.currentTarget.style.paddingLeft = "0px";
           }}
         >
@@ -234,7 +234,7 @@ export default function Navbar() {
       paddingBottom: "24px",
     }}
   >
-    <a
+    {/* <a
       href="/login"
       onClick={() => setMobileMenuOpen(false)}
       style={{
@@ -242,15 +242,15 @@ export default function Navbar() {
         fontSize: "9.5px",
         letterSpacing: "0.18em",
         textTransform: "uppercase",
-        color: "#9a9a9a",
+        color: "#b0b0b0",
         textDecoration: "none",
         transition: "color 0.18s ease",
       }}
-      onMouseEnter={e => { e.currentTarget.style.color = "#666"; }}
-      onMouseLeave={e => { e.currentTarget.style.color = "#252525"; }}
+      onMouseEnter={e => { e.currentTarget.style.color = "#ffffff"; }}
+      onMouseLeave={e => { e.currentTarget.style.color = "#b0b0b0"; }}
     >
       Login
-    </a>
+    </a> */}
     <div className="flex items-center gap-2">
       <span style={{
         width: "4px", height: "4px",
@@ -264,7 +264,7 @@ export default function Navbar() {
         fontSize: "8px",
         letterSpacing: "0.14em",
         textTransform: "uppercase",
-        color: "#9a9a9a",
+        color: "#b0b0b0",
       }}>
         Grox
       </span>

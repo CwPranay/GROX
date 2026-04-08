@@ -3,7 +3,8 @@ import { useScrollAnimation } from "../hooks/useScrollAnimation";
 
 export default function Process() {
     const [headerRef, headerVisible] = useScrollAnimation();
-    const [flowRef, flowVisible] = useScrollAnimation();
+    const [flowDesktopRef, flowDesktopVisible] = useScrollAnimation();
+    const [flowMobileRef, flowMobileVisible] = useScrollAnimation();
 
     const steps = [
         {
@@ -37,14 +38,14 @@ export default function Process() {
           font-size: 9px;
           letter-spacing: 0.22em;
           text-transform: uppercase;
-          color: #2a2a2a;
+          color: #666666;
         }
 
         .process-step-index {
           font-family: 'DM Mono', monospace;
           font-size: 9px;
           letter-spacing: 0.14em;
-         color: #6a6a6a;
+         color: #888888;
         }
 
         .process-step-heading-light {
@@ -71,14 +72,14 @@ export default function Process() {
           font-family: 'DM Sans', sans-serif;
           font-size: 13px;
           line-height: 1.8;
-         color: #6a6a6a; 
+         color: #888888; 
         }
 
         .process-step-body-heavy {
           font-family: 'DM Sans', sans-serif;
           font-size: 14px;
           line-height: 1.8;
-          color: #555;
+          color: #b0b0b0;
         }
 
         .process-connector {
@@ -107,7 +108,7 @@ export default function Process() {
           font-size: 9px;
           letter-spacing: 0.22em;
           text-transform: uppercase;
-          color: #6a6a6a;
+          color: #888888;
         }
           .process-step {
        transition: opacity 0.25s ease, transform 0.25s ease;
@@ -132,7 +133,7 @@ export default function Process() {
           font-family: 'DM Sans', sans-serif;
           font-size: 14px;
           line-height: 1.8;
-          color: #7a7a7a; 
+          color: #888888; 
           max-width: 280px
         }
 
@@ -141,7 +142,7 @@ export default function Process() {
           font-size: 10px;
           letter-spacing: 0.18em;
           text-transform: uppercase;
-          color: #6a6a6a;
+          color: #888888;
         }
       `}</style>
 
@@ -184,9 +185,9 @@ export default function Process() {
 
                     {/* ── Desktop flow — staggered asymmetric ── */}
                     <motion.div 
-                        ref={flowRef}
+                        ref={flowDesktopRef}
                         initial={{ opacity: 0, y: 20 }}
-                        animate={flowVisible ? { opacity: 1, y: 0 } : {}}
+                        animate={flowDesktopVisible ? { opacity: 1, y: 0 } : {}}
                         transition={{ duration: 0.6, ease: "easeOut" }}
                         className="hidden md:block"
                     >
@@ -264,9 +265,9 @@ export default function Process() {
 
                     {/* ── Mobile flow — vertical stagger ── */}
                     <motion.div 
-                        ref={flowRef}
+                        ref={flowMobileRef}
                         initial={{ opacity: 0, y: 20 }}
-                        animate={flowVisible ? { opacity: 1, y: 0 } : {}}
+                        animate={flowMobileVisible ? { opacity: 1, y: 0 } : {}}
                         transition={{ duration: 0.6, ease: "easeOut" }}
                         className="md:hidden flex flex-col"
                     >

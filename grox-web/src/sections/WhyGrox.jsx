@@ -14,7 +14,7 @@ export default function WhyGrox() {
           font-size: 9px;
           letter-spacing: 0.22em;
           text-transform: uppercase;
-          color: #6a6a6a;
+          color: #888888;
         }
 
         .why-h2 {
@@ -64,7 +64,7 @@ export default function WhyGrox() {
           font-family: 'DM Sans', sans-serif;
           font-size: 13.5px;
           line-height: 1.85;
-          color: #6a6a6a;
+          color: #888888;
         }
 
         .why-strong-line {
@@ -72,7 +72,7 @@ export default function WhyGrox() {
           font-size: 15px;
           font-weight: 500;
           line-height: 1.7;
-          color: #5a5a5a;
+          color: #b0b0b0;
         }
 
         .why-resolution {
@@ -191,7 +191,7 @@ export default function WhyGrox() {
                 <p
                   className="why-body mb-1"
                   style={{
-                    color: "#5a5a5a",
+                    color: "#888888",
                     fontSize: "10px",
                     fontFamily: "'DM Mono', monospace",
                     letterSpacing: "0.18em",
@@ -230,7 +230,7 @@ export default function WhyGrox() {
                 <p
                   className="why-body mb-3"
                   style={{
-                    color: "#5a5a5a",
+                    color: "#888888",
                     fontSize: "10px",
                     fontFamily: "'DM Mono', monospace",
                     letterSpacing: "0.18em",
@@ -248,7 +248,7 @@ export default function WhyGrox() {
                   You submit.<br />
                   <span>We own it.</span>
                 </p>
-                <p className="why-body mt-6" style={{ maxWidth: "380px" }}>
+                <p className="why-body mt-6" style={{ maxWidth: "380px", color: "#b0b0b0" }}>
                   Structure, speed, and accountability — built into the system.
                   Not promised. Not managed by you.
                   Just how it runs.

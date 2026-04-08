@@ -42,7 +42,7 @@ export default function SelectedWork() {
           font-size: 9px;
           letter-spacing: 0.22em;
           text-transform: uppercase;
-          color: #6a6a6a;
+          color: #888888;
         }
 
         .work-h2 {
@@ -59,7 +59,7 @@ export default function SelectedWork() {
           font-family: 'DM Sans', sans-serif;
           font-size: 13px;
           line-height: 1.8;
-          color: #7a7a7a;
+          color: #888888;
           max-width: 280px;
         }
 
@@ -104,7 +104,7 @@ export default function SelectedWork() {
           font-family: 'DM Mono', monospace;
           font-size: 9px;
           letter-spacing: 0.16em;
-          color: #6a6a6a;
+          color: #888888;
         }
 
         .proj-title {
@@ -121,7 +121,7 @@ export default function SelectedWork() {
           font-family: 'DM Sans', sans-serif;
           font-size: 12px;
           line-height: 1.6;
-          color: #7a7a7a;
+          color: #888888;
           max-width: 460px;
           transition: color 0.2s ease;
         }
@@ -131,7 +131,7 @@ export default function SelectedWork() {
           font-size: 8px;
           letter-spacing: 0.16em;
           text-transform: uppercase;
-          color: #6a6a6a;
+          color: #888888;
         }
 
         .proj-tag-upcoming {
@@ -155,7 +155,7 @@ export default function SelectedWork() {
           font-size: 10px;
           letter-spacing: 0.2em;
           text-transform: uppercase;
-          color: #7a7a7a;
+          color: #888888;
           text-decoration: none;
           display: inline-flex;
           align-items: center;
@@ -196,7 +196,7 @@ export default function SelectedWork() {
           font-size: 9.5px;
           letter-spacing: 0.16em;
           text-transform: uppercase;
-          color: #6a6a6a;
+          color: #888888;
         }
       `}</style>
 

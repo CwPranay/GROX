@@ -81,7 +81,7 @@ export default function Request() {
  @import url('${FONT_URL}');
 
 .rq-page {
-  background-color: #080808;
+  background-color: #070707;
   min-height: 100vh;
   padding-bottom: clamp(4rem, 10vw, 7rem);
 }
@@ -249,7 +249,7 @@ export default function Request() {
                                 fontSize: "9px",
                                 letterSpacing: "0.22em",
                                 textTransform: "uppercase",
-                                color: "#555",
+                                color: "#888888",
                             }}>
                                 Request Execution
                             </p>
@@ -287,7 +287,7 @@ export default function Request() {
                                 fontSize: "10px",
                                 letterSpacing: "0.16em",
                                 textTransform: "uppercase",
-                                color: "#444",
+                                color: "#666666",
                             }}>
                                 If it's a fit, we'll respond within 24–48 hours.
                             </p>
@@ -356,7 +356,7 @@ export default function Request() {
                                     fontFamily: "'DM Sans', sans-serif",
                                     fontSize: "14px",
                                     lineHeight: 1.8,
-                                    color: "#7a7a7a",
+                                    color: "#888888",
                                     marginBottom: "8px",
                                 }}>
                                     We'll respond via email.
@@ -367,7 +367,7 @@ export default function Request() {
                                     fontSize: "10px",
                                     letterSpacing: "0.14em",
                                     textTransform: "uppercase",
-                                    color: "#333",
+                                    color: "#666666",
                                 }}>
                                     No spam. No auto-replies. A real response.
                                 </p>
@@ -586,7 +586,7 @@ export default function Request() {
                                             fontSize: "9px",
                                             letterSpacing: "0.16em",
                                             textTransform: "uppercase",
-                                            color: "#333",
+                                            color: "#666666",
                                         }}>
                                             Response within 24–48h
                                         </p>
@@ -597,7 +597,7 @@ export default function Request() {
                                         fontSize: "9px",
                                         letterSpacing: "0.14em",
                                         textTransform: "uppercase",
-                                        color: "#2a2a2a",
+                                        color: "#666666",
                                     }}>
                                         We don't share your information. Ever.
                                     </p>

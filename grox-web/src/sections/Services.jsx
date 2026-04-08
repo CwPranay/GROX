@@ -15,7 +15,7 @@ export default function Services() {
           font-size: 9px;
           letter-spacing: 0.22em;
           text-transform: uppercase;
-          color: #6a6a6a;
+          color: #888888;
         }
 
         .svc-h2 {
@@ -32,7 +32,7 @@ export default function Services() {
           font-family: 'DM Sans', sans-serif;
           font-size: 13px;
           line-height: 1.85;
-          color: #6a6a6a;
+          color: #888888;
         }
 
         .svc-head-primary {
@@ -65,7 +65,7 @@ export default function Services() {
           font-size: 8.5px;
           letter-spacing: 0.2em;
           text-transform: uppercase;
-          color: #6a6a6a;
+          color: #888888;
         }
 
         .svc-tag-active {
@@ -80,7 +80,7 @@ export default function Services() {
           font-family: 'DM Sans', sans-serif;
           font-size: 13px;
           line-height: 1.85;
-          color: #6a6a6a;
+          color: #888888;
         }
 
         .svc-body-primary {
@@ -95,7 +95,7 @@ export default function Services() {
           font-size: 8px;
           letter-spacing: 0.18em;
           text-transform: uppercase;
-          color: #4a4a4a;
+          color: #666666;
           writing-mode: vertical-rl;
           transform: rotate(180deg);
         }

@@ -23,12 +23,12 @@ export default function Footer() {
           font-size: 9px;
           letter-spacing: 0.18em;
           text-transform: uppercase;
-          color: #6a6a6a;
+          color: #888888;
           transition: color 0.18s ease;
         }
 
         .footer-copy:hover {
-          color: #9a9a9a;
+          color: #b0b0b0;
         }
 
         .footer-label {
@@ -36,7 +36,7 @@ export default function Footer() {
           font-size: 8.5px;
           letter-spacing: 0.22em;
           text-transform: uppercase;
-          color: #7a7a7a;
+          color: #888888;
         }
 
         .footer-brand img {

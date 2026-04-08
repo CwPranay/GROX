@@ -132,7 +132,7 @@ export default function Hero() {
           font-weight: 500;
           letter-spacing: 0.16em;
           text-transform: uppercase;
-          color: #444;
+          color: #888888;
           text-decoration: none;
           display: flex;
           align-items: center;
@@ -179,7 +179,7 @@ export default function Hero() {
           font-size: 9px;
           text-transform: uppercase;
           letter-spacing: 0.15em;
-          color: #3a3a3a;
+          color: #666666;
         }
       `}</style>
 
@@ -230,7 +230,7 @@ export default function Hero() {
               />
               <p
                 className="text-[10px] sm:text-[11px] uppercase tracking-[0.2em] font-medium"
-                style={{ color: "#555", fontFamily: "'DM Mono', monospace" }}
+                style={{ color: "#888888", fontFamily: "'DM Mono', monospace" }}
               >
                 Creative Execution Company
               </p>
@@ -285,7 +285,7 @@ export default function Hero() {
               transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
               className="text-[13px] sm:text-[15px] leading-[1.8] mb-8 sm:mb-10 lg:mb-12"
               style={{
-                color: "#606060",
+                color: "#b0b0b0",
                 fontFamily: "'DM Sans', sans-serif",
                 maxWidth: "380px",
               }}
@@ -294,7 +294,7 @@ export default function Hero() {
               <br />
               No chaos. No delays. No freelancer noise.
               <br />
-              <span style={{ color: "#909090" }}>
+              <span style={{ color: "#ffffff" }}>
                 You hand us the brief — we ship the result.
               </span>
             </motion.p>
