@@ -48,11 +48,19 @@ export default function Request() {
         if (Object.keys(errs).length) { setErrors(errs); return; }
         setLoading(true);
         try {
-            await fetch("/api/request", {
+            const res = await fetch("/api/request", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(form),
             });
+
+            const data = await res.json();
+
+            console.log("API RESPONSE:", data);
+
+            if (!res.ok) {
+                throw new Error(data.message || "Something failed");
+            }
         } catch (_) { }
         setLoading(false);
         setSubmitted(true);
@@ -67,7 +75,7 @@ export default function Request() {
 
     return (
         <>
-            
+
 
             <style>{`
  @import url('${FONT_URL}');
@@ -226,7 +234,7 @@ export default function Request() {
                 <div className="max-w-[900px] mx-auto px-5 sm:px-10 lg:px-16">
 
                     {/* ── Page header ── */}
-                    <motion.div 
+                    <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.7, ease: "easeOut" }}
@@ -301,303 +309,303 @@ export default function Request() {
 
                     {/* ── Form / Success ── */}
                     <AnimatePresence mode="wait">
-                    {submitted ? (
+                        {submitted ? (
 
-                        /* ── SUCCESS STATE ── */
-                        <motion.div 
-                            key="success"
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -20 }}
-                            transition={{ duration: 0.6, ease: "easeOut" }}
-                            style={{ paddingBottom: "clamp(4rem, 10vw, 7rem)" }}
-                        >
-                            <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "32px" }}>
-                                <span style={{
-                                    width: "6px", height: "6px",
-                                    borderRadius: "50%",
-                                    background: "#dc2626",
-                                    flexShrink: 0,
-                                }} />
+                            /* ── SUCCESS STATE ── */
+                            <motion.div
+                                key="success"
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: -20 }}
+                                transition={{ duration: 0.6, ease: "easeOut" }}
+                                style={{ paddingBottom: "clamp(4rem, 10vw, 7rem)" }}
+                            >
+                                <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "32px" }}>
+                                    <span style={{
+                                        width: "6px", height: "6px",
+                                        borderRadius: "50%",
+                                        background: "#dc2626",
+                                        flexShrink: 0,
+                                    }} />
+                                    <p style={{
+                                        fontFamily: "'DM Mono', monospace",
+                                        fontSize: "9px",
+                                        letterSpacing: "0.22em",
+                                        textTransform: "uppercase",
+                                        color: "rgba(220,38,38,0.7)",
+                                    }}>
+                                        Request Received
+                                    </p>
+                                </div>
+
+                                <h2 style={{
+                                    fontFamily: "'Barlow Condensed', sans-serif",
+                                    fontWeight: 800,
+                                    fontSize: "clamp(2rem, 5vw, 3.2rem)",
+                                    textTransform: "uppercase",
+                                    letterSpacing: "-0.01em",
+                                    lineHeight: 0.95,
+                                    color: "#f5f5f5",
+                                    marginBottom: "24px",
+                                }}>
+                                    If it's a fit,<br />we'll reach out<br />
+                                    <span style={{ color: "#dc2626" }}>within 48 hours.</span>
+                                </h2>
+
+                                <p style={{
+                                    fontFamily: "'DM Sans', sans-serif",
+                                    fontSize: "14px",
+                                    lineHeight: 1.8,
+                                    color: "#7a7a7a",
+                                    marginBottom: "8px",
+                                }}>
+                                    We'll respond via email.
+                                </p>
+
                                 <p style={{
                                     fontFamily: "'DM Mono', monospace",
-                                    fontSize: "9px",
-                                    letterSpacing: "0.22em",
+                                    fontSize: "10px",
+                                    letterSpacing: "0.14em",
                                     textTransform: "uppercase",
-                                    color: "rgba(220,38,38,0.7)",
+                                    color: "#333",
                                 }}>
-                                    Request Received
+                                    No spam. No auto-replies. A real response.
                                 </p>
-                            </div>
 
-                            <h2 style={{
-                                fontFamily: "'Barlow Condensed', sans-serif",
-                                fontWeight: 800,
-                                fontSize: "clamp(2rem, 5vw, 3.2rem)",
-                                textTransform: "uppercase",
-                                letterSpacing: "-0.01em",
-                                lineHeight: 0.95,
-                                color: "#f5f5f5",
-                                marginBottom: "24px",
-                            }}>
-                                If it's a fit,<br />we'll reach out<br />
-                                <span style={{ color: "#dc2626" }}>within 48 hours.</span>
-                            </h2>
-
-                            <p style={{
-                                fontFamily: "'DM Sans', sans-serif",
-                                fontSize: "14px",
-                                lineHeight: 1.8,
-                                color: "#7a7a7a",
-                                marginBottom: "8px",
-                            }}>
-                                We'll respond via email.
-                            </p>
-
-                            <p style={{
-                                fontFamily: "'DM Mono', monospace",
-                                fontSize: "10px",
-                                letterSpacing: "0.14em",
-                                textTransform: "uppercase",
-                                color: "#333",
-                            }}>
-                                No spam. No auto-replies. A real response.
-                            </p>
-
-                            <button className="rq-btn-ghost" onClick={reset}>
-                                {"←"} Submit another request
-                            </button>
-                        </motion.div>
-
-                    ) : (
-
-                        /* ── FORM ── */
-                        <motion.form 
-                            key="form"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                            transition={{ duration: 0.4, ease: "easeOut" }}
-                            onSubmit={handleSubmit} 
-                            noValidate
-                        >
-
-                            {/* Row group: Name + Email */}
-                            <motion.div
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
-                                className="grid grid-cols-1 sm:grid-cols-2"
-                                style={{ gap: "clamp(2rem, 5vw, 4rem)", marginBottom: "clamp(2rem, 5vw, 3.5rem)" }}
-                            >
-                                {/* Name */}
-                                <div>
-                                    <label className="rq-label" htmlFor="name">
-                                        Full Name
-                                    </label>
-                                    <input
-                                        ref={firstInputRef}
-                                        id="name"
-                                        name="name"
-                                        type="text"
-                                        autoComplete="name"
-                                        placeholder="Your name"
-                                        value={form.name}
-                                        onChange={handleChange}
-                                        className={`rq-input${errors.name ? " error" : ""}`}
-                                    />
-                                    {errors.name && <span className="rq-error-label">{errors.name}</span>}
-                                </div>
-
-                                {/* Email */}
-                                <div>
-                                    <label className="rq-label" htmlFor="email">
-                                        Email
-                                    </label>
-                                    <input
-                                        id="email"
-                                        name="email"
-                                        type="email"
-                                        autoComplete="email"
-                                        placeholder="you@company.com"
-                                        value={form.email}
-                                        onChange={handleChange}
-                                        className={`rq-input${errors.email ? " error" : ""}`}
-                                    />
-                                    {errors.email && <span className="rq-error-label">{errors.email}</span>}
-                                </div>
+                                <button className="rq-btn-ghost" onClick={reset}>
+                                    {"←"} Submit another request
+                                </button>
                             </motion.div>
 
-                            {/* Row group: Phone + Project Type */}
-                            <motion.div
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-                                className="grid grid-cols-1 sm:grid-cols-2"
-                                style={{ gap: "clamp(2rem, 5vw, 4rem)", marginBottom: "clamp(2rem, 5vw, 3.5rem)" }}
+                        ) : (
+
+                            /* ── FORM ── */
+                            <motion.form
+                                key="form"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                transition={{ duration: 0.4, ease: "easeOut" }}
+                                onSubmit={handleSubmit}
+                                noValidate
                             >
-                                {/* Phone */}
-                                <div>
-                                    <label className="rq-label" htmlFor="phone">
-                                        Phone <span className="rq-optional">Optional</span>
+
+                                {/* Row group: Name + Email */}
+                                <motion.div
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
+                                    className="grid grid-cols-1 sm:grid-cols-2"
+                                    style={{ gap: "clamp(2rem, 5vw, 4rem)", marginBottom: "clamp(2rem, 5vw, 3.5rem)" }}
+                                >
+                                    {/* Name */}
+                                    <div>
+                                        <label className="rq-label" htmlFor="name">
+                                            Full Name
+                                        </label>
+                                        <input
+                                            ref={firstInputRef}
+                                            id="name"
+                                            name="name"
+                                            type="text"
+                                            autoComplete="name"
+                                            placeholder="Your name"
+                                            value={form.name}
+                                            onChange={handleChange}
+                                            className={`rq-input${errors.name ? " error" : ""}`}
+                                        />
+                                        {errors.name && <span className="rq-error-label">{errors.name}</span>}
+                                    </div>
+
+                                    {/* Email */}
+                                    <div>
+                                        <label className="rq-label" htmlFor="email">
+                                            Email
+                                        </label>
+                                        <input
+                                            id="email"
+                                            name="email"
+                                            type="email"
+                                            autoComplete="email"
+                                            placeholder="you@company.com"
+                                            value={form.email}
+                                            onChange={handleChange}
+                                            className={`rq-input${errors.email ? " error" : ""}`}
+                                        />
+                                        {errors.email && <span className="rq-error-label">{errors.email}</span>}
+                                    </div>
+                                </motion.div>
+
+                                {/* Row group: Phone + Project Type */}
+                                <motion.div
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+                                    className="grid grid-cols-1 sm:grid-cols-2"
+                                    style={{ gap: "clamp(2rem, 5vw, 4rem)", marginBottom: "clamp(2rem, 5vw, 3.5rem)" }}
+                                >
+                                    {/* Phone */}
+                                    <div>
+                                        <label className="rq-label" htmlFor="phone">
+                                            Phone <span className="rq-optional">Optional</span>
+                                        </label>
+                                        <input
+                                            id="phone"
+                                            name="phone"
+                                            type="tel"
+                                            autoComplete="tel"
+                                            placeholder="+91 00000 00000"
+                                            value={form.phone}
+                                            onChange={handleChange}
+                                            className="rq-input"
+                                        />
+                                    </div>
+
+                                    {/* Project Type */}
+                                    <div>
+                                        <label className="rq-label" htmlFor="projectType">
+                                            Project Type
+                                        </label>
+                                        <CustomSelect
+                                            name="projectType"
+                                            value={form.projectType}
+                                            onChange={handleChange}
+                                            placeholder="Select type"
+                                            error={errors.projectType}
+                                            options={[
+                                                { label: "Website", value: "website" },
+                                                { label: "Conversion System", value: "conversion" },
+                                                { label: "Landing Page", value: "landing" },
+                                                { label: "Internal Tool", value: "tool" },
+                                                { label: "Other", value: "other" },
+                                            ]}
+                                        />
+                                        {errors.projectType && <span className="rq-error-label">{errors.projectType}</span>}
+                                    </div>
+                                </motion.div>
+
+                                {/* Description */}
+                                <motion.div
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+                                    style={{ marginBottom: "clamp(2rem, 5vw, 3.5rem)" }}
+                                >
+                                    <label className="rq-label" htmlFor="description">
+                                        What needs to be executed
                                     </label>
-                                    <input
-                                        id="phone"
-                                        name="phone"
-                                        type="tel"
-                                        autoComplete="tel"
-                                        placeholder="+91 00000 00000"
-                                        value={form.phone}
+                                    <textarea
+                                        id="description"
+                                        name="description"
+                                        placeholder="Describe the scope, problem, or goal — be direct."
+                                        value={form.description}
                                         onChange={handleChange}
-                                        className="rq-input"
+                                        className={`rq-textarea${errors.description ? " error" : ""}`}
+                                        rows={5}
                                     />
-                                </div>
+                                    {errors.description && <span className="rq-error-label">{errors.description}</span>}
+                                </motion.div>
 
-                                {/* Project Type */}
-                                <div>
-                                    <label className="rq-label" htmlFor="projectType">
-                                        Project Type
-                                    </label>
-                                    <CustomSelect
-                                        name="projectType"
-                                        value={form.projectType}
-                                        onChange={handleChange}
-                                        placeholder="Select type"
-                                        error={errors.projectType}
-                                        options={[
-                                            { label: "Website", value: "website" },
-                                            { label: "Conversion System", value: "conversion" },
-                                            { label: "Landing Page", value: "landing" },
-                                            { label: "Internal Tool", value: "tool" },
-                                            { label: "Other", value: "other" },
-                                        ]}
-                                    />
-                                    {errors.projectType && <span className="rq-error-label">{errors.projectType}</span>}
-                                </div>
-                            </motion.div>
+                                {/* Row group: Timeline + Budget */}
+                                <motion.div
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+                                    className="grid grid-cols-1 sm:grid-cols-2"
+                                    style={{ gap: "clamp(2rem, 5vw, 4rem)", marginBottom: "clamp(2.5rem, 6vw, 4.5rem)" }}
+                                >
+                                    {/* Timeline */}
+                                    <div>
+                                        <label className="rq-label" htmlFor="timeline">
+                                            Timeline
+                                        </label>
+                                        <CustomSelect
+                                            name="timeline"
+                                            value={form.timeline}
+                                            onChange={handleChange}
+                                            placeholder="Select timeline"
+                                            error={errors.timeline}
+                                            options={[
+                                                { label: "ASAP", value: "asap" },
+                                                { label: "2–4 weeks", value: "2-4weeks" },
+                                                { label: "1–2 months", value: "1-2months" },
+                                                { label: "Flexible", value: "flexible" },
+                                            ]}
+                                        />
+                                        {errors.timeline && <span className="rq-error-label">{errors.timeline}</span>}
+                                    </div>
 
-                            {/* Description */}
-                            <motion.div 
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
-                                style={{ marginBottom: "clamp(2rem, 5vw, 3.5rem)" }}
-                            >
-                                <label className="rq-label" htmlFor="description">
-                                    What needs to be executed
-                                </label>
-                                <textarea
-                                    id="description"
-                                    name="description"
-                                    placeholder="Describe the scope, problem, or goal — be direct."
-                                    value={form.description}
-                                    onChange={handleChange}
-                                    className={`rq-textarea${errors.description ? " error" : ""}`}
-                                    rows={5}
-                                />
-                                {errors.description && <span className="rq-error-label">{errors.description}</span>}
-                            </motion.div>
+                                    {/* Budget */}
+                                    <div>
+                                        <label className="rq-label" htmlFor="budget">
+                                            Budget <span className="rq-optional">Optional</span>
+                                        </label>
+                                        <CustomSelect
+                                            name="budget"
+                                            value={form.budget}
+                                            onChange={handleChange}
+                                            placeholder="Select range"
+                                            options={[
+                                                { label: "< ₹50,000", value: "under50k" },
+                                                { label: "₹50,000 – ₹1,00,000", value: "50k-1L" },
+                                                { label: "₹1,00,000+", value: "1L+" },
+                                                { label: "Let's discuss", value: "discuss" },
+                                            ]}
+                                        />
+                                    </div>
+                                </motion.div>
 
-                            {/* Row group: Timeline + Budget */}
-                            <motion.div
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
-                                className="grid grid-cols-1 sm:grid-cols-2"
-                                style={{ gap: "clamp(2rem, 5vw, 4rem)", marginBottom: "clamp(2.5rem, 6vw, 4.5rem)" }}
-                            >
-                                {/* Timeline */}
-                                <div>
-                                    <label className="rq-label" htmlFor="timeline">
-                                        Timeline
-                                    </label>
-                                    <CustomSelect
-                                        name="timeline"
-                                        value={form.timeline}
-                                        onChange={handleChange}
-                                        placeholder="Select timeline"
-                                        error={errors.timeline}
-                                        options={[
-                                            { label: "ASAP", value: "asap" },
-                                            { label: "2–4 weeks", value: "2-4weeks" },
-                                            { label: "1–2 months", value: "1-2months" },
-                                            { label: "Flexible", value: "flexible" },
-                                        ]}
-                                    />
-                                    {errors.timeline && <span className="rq-error-label">{errors.timeline}</span>}
-                                </div>
+                                {/* Divider */}
+                                <div className="rq-section-divider" />
 
-                                {/* Budget */}
-                                <div>
-                                    <label className="rq-label" htmlFor="budget">
-                                        Budget <span className="rq-optional">Optional</span>
-                                    </label>
-                                    <CustomSelect
-                                        name="budget"
-                                        value={form.budget}
-                                        onChange={handleChange}
-                                        placeholder="Select range"
-                                        options={[
-                                            { label: "< ₹50,000", value: "under50k" },
-                                            { label: "₹50,000 – ₹1,00,000", value: "50k-1L" },
-                                            { label: "₹1,00,000+", value: "1L+" },
-                                            { label: "Let's discuss", value: "discuss" },
-                                        ]}
-                                    />
-                                </div>
-                            </motion.div>
+                                {/* Submit row */}
+                                <motion.div
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
+                                    style={{
+                                        display: "flex",
+                                        flexDirection: "column",
+                                        gap: "20px",
+                                    }}
+                                >
+                                    <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "16px" }}>
+                                        <button
+                                            type="submit"
+                                            className="rq-btn"
+                                            disabled={loading}
+                                        >
+                                            {loading ? "Sending..." : "Request Execution"}
+                                            {!loading && (
+                                                <span style={{ display: "inline-block" }}>{"→"}</span>
+                                            )}
+                                        </button>
 
-                            {/* Divider */}
-                            <div className="rq-section-divider" />
-
-                            {/* Submit row */}
-                            <motion.div
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
-                                style={{
-                                    display: "flex",
-                                    flexDirection: "column",
-                                    gap: "20px",
-                                }}
-                            >
-                                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "16px" }}>
-                                    <button
-                                        type="submit"
-                                        className="rq-btn"
-                                        disabled={loading}
-                                    >
-                                        {loading ? "Sending..." : "Request Execution"}
-                                        {!loading && (
-                                            <span style={{ display: "inline-block" }}>{"→"}</span>
-                                        )}
-                                    </button>
+                                        <p style={{
+                                            fontFamily: "'DM Mono', monospace",
+                                            fontSize: "9px",
+                                            letterSpacing: "0.16em",
+                                            textTransform: "uppercase",
+                                            color: "#333",
+                                        }}>
+                                            Response within 24–48h
+                                        </p>
+                                    </div>
 
                                     <p style={{
                                         fontFamily: "'DM Mono', monospace",
                                         fontSize: "9px",
-                                        letterSpacing: "0.16em",
+                                        letterSpacing: "0.14em",
                                         textTransform: "uppercase",
-                                        color: "#333",
+                                        color: "#2a2a2a",
                                     }}>
-                                        Response within 24–48h
+                                        We don't share your information. Ever.
                                     </p>
-                                </div>
+                                </motion.div>
 
-                                <p style={{
-                                    fontFamily: "'DM Mono', monospace",
-                                    fontSize: "9px",
-                                    letterSpacing: "0.14em",
-                                    textTransform: "uppercase",
-                                    color: "#2a2a2a",
-                                }}>
-                                    We don't share your information. Ever.
-                                </p>
-                            </motion.div>
+                            </motion.form>
 
-                        </motion.form>
-
-                    )}
+                        )}
                     </AnimatePresence>
                 </div>
             </div>
