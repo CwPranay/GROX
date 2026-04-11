@@ -1,6 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { CustomSelect } from "../CustomSelect"
+import { CustomSelect } from "../CustomSelect";
+import Navbar from "../components/Navbar";
+import SEO from "../components/SEO";
+import StructuredData, { generateBreadcrumbSchema } from "../components/StructuredData";
+import Footer from "../components/Footer";
 
 const FONT_URL =
     "https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500&display=swap";
@@ -73,9 +77,42 @@ export default function Request() {
         setTimeout(() => firstInputRef.current?.focus(), 50);
     };
 
+    // Breadcrumb schema for Request page
+    const breadcrumbSchema = generateBreadcrumbSchema([
+        { name: "Home", url: "https://grox.com" },
+        { name: "Request Execution", url: "https://grox.com/request" }
+    ]);
+
+    // Contact page schema
+    const contactSchema = {
+        "@context": "https://schema.org",
+        "@type": "ContactPage",
+        "name": "Request Execution — GROX",
+        "description": "Submit your project to GROX. We execute design, development, and content systems with structure and speed.",
+        "url": "https://grox.com/request",
+        "mainEntity": {
+            "@type": "Organization",
+            "name": "GROX",
+            "contactPoint": {
+                "@type": "ContactPoint",
+                "contactType": "Project Inquiries",
+                "availableLanguage": ["English"]
+            }
+        }
+    };
+
+    const requestPageSchema = {
+        "@context": "https://schema.org",
+        "@graph": [breadcrumbSchema, contactSchema]
+    };
+
     return (
         <>
-
+            <SEO 
+                title="Request Execution — GROX | Submit Your Project"
+                description="Submit your project to GROX. We execute design, development, and content systems with structure and speed. Response within 24-48 hours."
+            />
+            <StructuredData data={requestPageSchema} />
 
             <style>{`
  @import url('${FONT_URL}');
@@ -230,7 +267,8 @@ export default function Request() {
 }
 `}</style>
 
-            <div className="rq-page">
+            <Navbar />
+            <main className="rq-page">
                 <div className="max-w-[900px] mx-auto px-5 sm:px-10 lg:px-16">
 
                     {/* ── Page header ── */}
@@ -607,7 +645,8 @@ export default function Request() {
                         )}
                     </AnimatePresence>
                 </div>
-            </div>
+            </main>
+            <Footer />
         </>
     );
 }

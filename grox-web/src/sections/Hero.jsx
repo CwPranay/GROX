@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
+import Navbar from "../components/Navbar";
 
 const FONT_URL =
   "https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500&display=swap";
@@ -183,6 +184,7 @@ export default function Hero() {
         }
       `}</style>
 
+      <Navbar />
       <section className="hero-section hero-noise relative min-h-svh flex items-center overflow-hidden">
 
         {/* Canvas — desktop only */}

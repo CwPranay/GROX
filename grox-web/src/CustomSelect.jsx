@@ -1,10 +1,24 @@
+import { useState, useEffect, useRef } from "react";
 
-import { useState } from "react";
 export function CustomSelect({ name, value, onChange, options, placeholder, error }) {
   const [open, setOpen] = useState(false);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    if (!open) return;
+    
+    const handleClickOutside = (e) => {
+      if (ref.current && !ref.current.contains(e.target)) {
+        setOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [open]);
 
   return (
-    <div className="relative">
+    <div className="relative" ref={ref}>
       <div
         onClick={() => setOpen(!open)}
         className={`rq-input cursor-pointer flex justify-between items-center ${

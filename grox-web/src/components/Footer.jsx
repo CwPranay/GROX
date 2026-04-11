@@ -146,8 +146,10 @@ export default function Footer() {
               <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
                 <img
                   src="./grox.png"
-                  alt="GROX"
+                  alt="GROX Logo"
                   width="54"
+                  height="auto"
+                  loading="lazy"
                   style={{ opacity: 0.7 }}
                 />
                 <p className="footer-brand-label">Execution Company</p>
@@ -157,7 +159,7 @@ export default function Footer() {
             {/* Navigation */}
             <div className="md:col-span-3 md:col-start-6">
               <span className="footer-col-label">Navigation</span>
-              <nav style={{ display: "flex", flexDirection: "column" }}>
+              <nav aria-label="Footer navigation" style={{ display: "flex", flexDirection: "column" }}>
                 {navLinks.map(({ label, href }) =>
                   label === "Request Execution" ? (
                     <a key={href} href={href} className="footer-nav-link-cta">

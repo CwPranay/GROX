@@ -116,16 +116,18 @@ export default function Navbar() {
         >
           <div className="max-w-[1200px] mx-auto px-6 flex items-center justify-between h-[70px]">
             {/* Logo */}
-            <img src="./grox.png" width="70" />
+            <a href="/" aria-label="GROX Home">
+              <img src="./grox.png" alt="GROX Logo" width="70" height="auto" loading="eager" />
+            </a>
 
             {/* Desktop Nav */}
-            <div className="hidden md:flex gap-14">
+            <nav aria-label="Main navigation" className="hidden md:flex gap-14">
               {navLinks.map((link) => (
                 <a key={link.href} href={link.href} className="nav-link">
                   {link.label}
                 </a>
               ))}
-            </div>
+            </nav>
 
             {/* Right */}
             <div className="flex items-center gap-6">
@@ -158,7 +160,7 @@ export default function Navbar() {
     className="flex items-center justify-between px-5 flex-shrink-0"
     style={{ height: "64px", borderBottom: "1px solid rgba(255,255,255,0.04)" }}
   >
-    <img src="./grox.png" alt="GROX" width="54" style={{ opacity: 0.8 }} />
+    <img src="./grox.png" alt="GROX" width="54" style={{ opacity: 0.8 }} loading="lazy" />
     <button
       onClick={() => setMobileMenuOpen(false)}
       aria-label="Close menu"

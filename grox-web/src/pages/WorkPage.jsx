@@ -1,4 +1,8 @@
 import { useEffect, useRef, useState } from "react";
+import Navbar from "../components/Navbar";
+import SEO from "../components/SEO";
+import StructuredData, { generateBreadcrumbSchema } from "../components/StructuredData";
+import Footer from "../components/Footer";
 
 const FONT_URL =
   "https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500&display=swap";
@@ -116,6 +120,8 @@ const cases = [
 
 function ImageBlock({ img, isMobile, delay }) {
   const ref = useFadeIn();
+  const [loaded, setLoaded] = useState(false);
+
   return (
     <div
       ref={ref}
@@ -131,25 +137,49 @@ function ImageBlock({ img, isMobile, delay }) {
         background: "#0f0f0f",
         border: "1px solid rgba(255,255,255,0.08)",
         overflow: "hidden",
+        position: "relative",
       }}>
+        {!loaded && (
+          <div style={{
+            position: "absolute",
+            inset: 0,
+            backgroundColor: "rgba(255, 255, 255, 0.03)",
+            overflow: "hidden",
+          }}>
+            <div style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100%",
+              background: "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.04) 50%, transparent 100%)",
+              animation: "shimmer 2s infinite",
+            }} />
+          </div>
+        )}
         <img
           src={img.src}
-          alt={img.label}
+          alt={`${img.label} screenshot`}
           loading="lazy"
+          onLoad={() => setLoaded(true)}
           style={{
             width: "100%",
             display: "block",
-            opacity: 0.92,
+            opacity: loaded ? 0.92 : 0,
             transform: "scale(1)",
-            transition: "opacity 0.25s ease, transform 0.35s ease",
+            transition: "opacity 0.4s ease, transform 0.35s ease",
           }}
           onMouseEnter={e => {
-            e.currentTarget.style.opacity = "1";
-            e.currentTarget.style.transform = "scale(1.02)";
+            if (loaded) {
+              e.currentTarget.style.opacity = "1";
+              e.currentTarget.style.transform = "scale(1.02)";
+            }
           }}
           onMouseLeave={e => {
-            e.currentTarget.style.opacity = "0.92";
-            e.currentTarget.style.transform = "scale(1)";
+            if (loaded) {
+              e.currentTarget.style.opacity = "0.92";
+              e.currentTarget.style.transform = "scale(1)";
+            }
           }}
         />
       </div>
@@ -420,17 +450,66 @@ function CaseStudy({ project, isLast }) {
 }
 
 export default function WorkPage() {
+  // Breadcrumb schema for Work page
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: "Home", url: "https://grox.com" },
+    { name: "Work", url: "https://grox.com/work" }
+  ]);
+
+  // Portfolio schema
+  const portfolioSchema = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "GROX Work Portfolio",
+    "description": "View GROX execution systems. Real projects, real outcomes. Design, development, and conversion systems built to deliver results.",
+    "url": "https://grox.com/work",
+    "mainEntity": {
+      "@type": "ItemList",
+      "itemListElement": cases.map((project, index) => ({
+        "@type": "CreativeWork",
+        "position": index + 1,
+        "name": project.title,
+        "description": project.description,
+        "url": project.link,
+        "creator": {
+          "@type": "Organization",
+          "name": "GROX"
+        },
+        "keywords": project.tag
+      }))
+    }
+  };
+
+  const workPageSchema = {
+    "@context": "https://schema.org",
+    "@graph": [breadcrumbSchema, portfolioSchema]
+  };
+
   return (
     <>
+      <SEO 
+        title="Work — GROX | Execution Systems That Ship"
+        description="View GROX execution systems. Real projects, real outcomes. Design, development, and conversion systems built to deliver results."
+      />
+      <StructuredData data={workPageSchema} />
       <style>{`
         @import url('${FONT_URL}');
         .work-page {
           background-color: #070707;
           min-height: 100vh;
         }
+        @keyframes shimmer {
+          0% {
+            transform: translateX(-100%);
+          }
+          100% {
+            transform: translateX(100%);
+          }
+        }
       `}</style>
 
-      <div className="work-page">
+      <Navbar />
+      <main className="work-page">
         <div className="max-w-[1200px] mx-auto px-5 sm:px-10 lg:px-20">
 
           {/* Page header */}
@@ -533,7 +612,8 @@ export default function WorkPage() {
           </div>
 
         </div>
-      </div>
+      </main>
+      <Footer />
     </>
   );
 }
