@@ -35,8 +35,8 @@ const benefits = [
 
 export default function VideoEditingServices() {
   const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: "Home", url: "https://grox.com" },
-    { name: "Video Editing Services for Creators", url: "https://grox.com/video-editing-services-creators" }
+    { name: "Home", url: "https://grox.tech" },
+    { name: "Video Editing Services for Creators", url: "https://grox.tech/video-editing-services-creators" }
   ]);
 
   const serviceSchema = {

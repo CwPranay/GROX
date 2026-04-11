@@ -452,8 +452,8 @@ function CaseStudy({ project, isLast }) {
 export default function WorkPage() {
   // Breadcrumb schema for Work page
   const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: "Home", url: "https://grox.com" },
-    { name: "Work", url: "https://grox.com/work" }
+    { name: "Home", url: "https://grox.tech" },
+    { name: "Work", url: "https://grox.tech/work" }
   ]);
 
   // Portfolio schema
@@ -462,7 +462,7 @@ export default function WorkPage() {
     "@type": "CollectionPage",
     "name": "GROX Work Portfolio",
     "description": "View GROX execution systems. Real projects, real outcomes. Design, development, and conversion systems built to deliver results.",
-    "url": "https://grox.com/work",
+    "url": "https://grox.tech/work",
     "mainEntity": {
       "@type": "ItemList",
       "itemListElement": cases.map((project, index) => ({

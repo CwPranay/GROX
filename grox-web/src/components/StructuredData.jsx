@@ -35,8 +35,8 @@ export const organizationSchema = {
   "@type": "Organization",
   "name": "GROX",
   "alternateName": "GROX Execution Company",
-  "url": "https://grox.com",
-  "logo": "https://grox.com/grox.png",
+  "url": "https://grox.tech",
+  "logo": "https://grox.tech/grox.png",
   "description": "GROX is an execution company delivering design, development, and content systems. No chaos. No delays. Just structured execution that ships.",
   "foundingDate": "2024",
   "slogan": "Built to Execute",
@@ -154,13 +154,13 @@ export const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   "name": "GROX",
-  "url": "https://grox.com",
+  "url": "https://grox.tech",
   "description": "Execution company delivering design, development, and content systems",
   "potentialAction": {
     "@type": "SearchAction",
     "target": {
       "@type": "EntryPoint",
-      "urlTemplate": "https://grox.com/search?q={search_term_string}"
+      "urlTemplate": "https://grox.tech/search?q={search_term_string}"
     },
     "query-input": "required name=search_term_string"
   }

@@ -79,8 +79,8 @@ export default function Request() {
 
     // Breadcrumb schema for Request page
     const breadcrumbSchema = generateBreadcrumbSchema([
-        { name: "Home", url: "https://grox.com" },
-        { name: "Request Execution", url: "https://grox.com/request" }
+        { name: "Home", url: "https://grox.tech" },
+        { name: "Request Execution", url: "https://grox.tech/request" }
     ]);
 
     // Contact page schema
@@ -89,7 +89,7 @@ export default function Request() {
         "@type": "ContactPage",
         "name": "Request Execution — GROX",
         "description": "Submit your project to GROX. We execute design, development, and content systems with structure and speed.",
-        "url": "https://grox.com/request",
+        "url": "https://grox.tech/request",
         "mainEntity": {
             "@type": "Organization",
             "name": "GROX",
