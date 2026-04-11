@@ -473,11 +473,10 @@ export default function Request() {
                                             placeholder="Select type"
                                             error={errors.projectType}
                                             options={[
-                                                { label: "Website", value: "website" },
-                                                { label: "Conversion System", value: "conversion" },
-                                                { label: "Landing Page", value: "landing" },
-                                                { label: "Internal Tool", value: "tool" },
-                                                { label: "Other", value: "other" },
+                                                { label: "Website & Funnels (Recommended)", value: "website_funnel" },
+                                                { label: "Content & Social Media", value: "content_social" },
+                                                { label: "Automation & Tools", value: "automation_tools" },
+                                                { label: "Custom Project", value: "custom" },
                                             ]}
                                         />
                                         {errors.projectType && <span className="rq-error-label">{errors.projectType}</span>}
