@@ -473,7 +473,7 @@ export default function Request() {
                                             placeholder="Select type"
                                             error={errors.projectType}
                                             options={[
-                                                { label: "Website & Funnels (Recommended)", value: "website_funnel" },
+                                                { label: "Website & Funnels", value: "website_funnel" },
                                                 { label: "Content & Social Media", value: "content_social" },
                                                 { label: "Automation & Tools", value: "automation_tools" },
                                                 { label: "Custom Project", value: "custom" },
