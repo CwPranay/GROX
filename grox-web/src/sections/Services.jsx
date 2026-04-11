@@ -15,7 +15,7 @@ export default function Services() {
           font-size: 9px;
           letter-spacing: 0.22em;
           text-transform: uppercase;
-          color: #888888;
+          color: #888;
         }
 
         .svc-h2 {
@@ -32,32 +32,17 @@ export default function Services() {
           font-family: 'DM Sans', sans-serif;
           font-size: 13px;
           line-height: 1.85;
-          color: #888888;
+          color: #888;
         }
 
-        .svc-head-primary {
+        .svc-head {
           font-family: 'Barlow Condensed', sans-serif;
-          font-weight: 800;
-          font-size: clamp(1.8rem, 4vw, 2.6rem);
+          font-weight: 700;
+          font-size: clamp(1.6rem, 3.5vw, 2.2rem);
           text-transform: uppercase;
           line-height: 1;
           color: #e0e0e0;
-        }
-
-        .svc-head-secondary {
-          font-family: 'Barlow Condensed', sans-serif;
-          font-weight: 700;
-          font-size: clamp(1.3rem, 2.8vw, 1.9rem);
-          text-transform: uppercase;
-          color: #9a9a9a;
-        }
-
-        .svc-head-tertiary {
-          font-family: 'Barlow Condensed', sans-serif;
-          font-weight: 700;
-          font-size: clamp(1.1rem, 2.4vw, 1.6rem);
-          text-transform: uppercase;
-          color: #7a7a7a;
+          transition: transform 0.25s ease;
         }
 
         .svc-tag {
@@ -65,29 +50,15 @@ export default function Services() {
           font-size: 8.5px;
           letter-spacing: 0.2em;
           text-transform: uppercase;
-          color: #888888;
-        }
-
-        .svc-tag-active {
-          font-family: 'DM Mono', monospace;
-          font-size: 8.5px;
-          letter-spacing: 0.2em;
-          text-transform: uppercase;
-          color: #dc2626;
+          color: #888;
+          transition: color 0.25s ease;
         }
 
         .svc-body {
           font-family: 'DM Sans', sans-serif;
           font-size: 13px;
           line-height: 1.85;
-          color: #888888;
-        }
-
-        .svc-body-primary {
-          font-family: 'DM Sans', sans-serif;
-          font-size: 14px;
-          line-height: 1.85;
-          color: #8a8a8a;
+          color: #888;
         }
 
         .svc-layer-label {
@@ -95,7 +66,7 @@ export default function Services() {
           font-size: 8px;
           letter-spacing: 0.18em;
           text-transform: uppercase;
-          color: #666666;
+          color: #666;
           writing-mode: vertical-rl;
           transform: rotate(180deg);
         }
@@ -108,14 +79,42 @@ export default function Services() {
           color: #8a8a8a;
         }
 
+        /* 🔥 PREMIUM ROW */
         .svc-row {
-          transition: transform 0.25s ease, opacity 0.25s ease;
+          position: relative;
+          transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
           opacity: 0.85;
+          border-left: 1px solid rgba(255,255,255,0.05);
+          padding-left: 20px;
+        }
+
+        .svc-row::before {
+          content: "";
+          position: absolute;
+          left: 0;
+          top: 0;
+          height: 100%;
+          width: 2px;
+          background: transparent;
+          transition: background 0.3s ease;
         }
 
         .svc-row:hover {
-          transform: translateY(-3px);
+          transform: translateY(-4px) scale(1.01);
           opacity: 1;
+        }
+
+        .svc-row:hover::before {
+          background: #dc2626;
+          box-shadow: 0 0 12px rgba(220,38,38,0.6);
+        }
+
+        .svc-row:hover .svc-tag {
+          color: #dc2626;
+        }
+
+        .svc-row:hover .svc-head {
+          transform: translateX(4px);
         }
       `}</style>
 
@@ -134,7 +133,7 @@ export default function Services() {
             ref={headerRef}
             initial={{ opacity: 0, y: 20 }}
             animate={headerVisible ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, ease: "easeOut" }}
+            transition={{ duration: 0.7 }}
             className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-16 sm:mb-20"
           >
             <div>
@@ -148,7 +147,7 @@ export default function Services() {
               </h2>
             </div>
             <p className="svc-anchor-body" style={{ maxWidth: "280px" }}>
-              Not a service list. Three execution layers — each one built to deliver outcomes with structure and control.
+              Not a service list. Three execution layers — built for outcomes.
             </p>
           </motion.div>
 
@@ -161,89 +160,51 @@ export default function Services() {
 
             <div className="md:col-span-11 flex flex-col">
 
-              {/* Layer 1 */}
-              <motion.div 
-                ref={layer1Ref}
-                initial={{ opacity: 0, y: 20 }}
-                animate={layer1Visible ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, ease: "easeOut" }}
-                className="svc-row grid md:grid-cols-12 py-12 border-b border-white/5"
-              >
-                <div className="md:col-span-3">
-                  <p className="svc-tag-active mb-4">Layer 01</p>
-                </div>
+              {[
+                {
+                  ref: layer1Ref,
+                  visible: layer1Visible,
+                  title: "Design Execution",
+                  desc: "Visual systems and brand assets executed with clarity.",
+                  points: "Brand identity. UI design. Marketing assets."
+                },
+                {
+                  ref: layer2Ref,
+                  visible: layer2Visible,
+                  title: "Development Execution",
+                  desc: "Web systems built structured and scalable.",
+                  points: "Web builds. Landing pages. Interfaces."
+                },
+                {
+                  ref: layer3Ref,
+                  visible: layer3Visible,
+                  title: "Content Execution",
+                  desc: "Content produced with speed and consistency.",
+                  points: "Reels. Edits. Thumbnails."
+                }
+              ].map((layer, i) => (
+                <motion.div
+                  key={i}
+                  ref={layer.ref}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={layer.visible ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.6 }}
+                  className={`svc-row grid md:grid-cols-12 py-10 ${i !== 2 ? "border-b border-white/5" : ""}`}
+                >
+                  <div className="md:col-span-3">
+                    <p className="svc-tag mb-4">Layer 0{i + 1}</p>
+                  </div>
 
-                <div className="md:col-span-5 md:px-10">
-                  <p className="svc-head-primary mb-5">
-                    Design<br />Execution
-                  </p>
-                  <p className="svc-body-primary">
-                    Visual systems, thumbnails, and brand assets executed with clarity and consistency — not scattered design tasks.
-                  </p>
-                </div>
+                  <div className="md:col-span-5 md:px-10">
+                    <p className="svc-head mb-4">{layer.title}</p>
+                    <p className="svc-body">{layer.desc}</p>
+                  </div>
 
-                <div className="md:col-span-4 md:pl-10">
-                  <p className="svc-body">
-                    Brand identity. UI design. Marketing assets. Visual systems that scale.
-                  </p>
-                </div>
-              </motion.div>
-
-              {/* Layer 2 */}
-              <motion.div 
-                ref={layer2Ref}
-                initial={{ opacity: 0, y: 20 }}
-                animate={layer2Visible ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, ease: "easeOut" }}
-                className="svc-row grid md:grid-cols-12 py-10 border-b border-white/5"
-              >
-                <div className="md:col-span-3">
-                  <p className="svc-tag mb-4">Layer 02</p>
-                </div>
-
-                <div className="md:col-span-5 md:px-10">
-                  <p className="svc-head-secondary mb-4">
-                    Development Execution
-                  </p>
-                  <p className="svc-body">
-                    Websites and interfaces built as systems — structured, scalable, and engineered to perform beyond launch.
-                  </p>
-                </div>
-
-                <div className="md:col-span-4 md:pl-10">
-                  <p className="svc-body">
-                    Web builds. Landing pages. Component systems. Interfaces that hold up.
-                  </p>
-                </div>
-              </motion.div>
-
-              {/* Layer 3 */}
-              <motion.div 
-                ref={layer3Ref}
-                initial={{ opacity: 0, y: 20 }}
-                animate={layer3Visible ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, ease: "easeOut" }}
-                className="svc-row grid md:grid-cols-12 py-10"
-              >
-                <div className="md:col-span-3">
-                  <p className="svc-tag mb-4">Layer 03</p>
-                </div>
-
-                <div className="md:col-span-5 md:px-10 md:pl-16">
-                  <p className="svc-head-tertiary mb-3">
-                    Content Execution
-                  </p>
-                  <p className="svc-body">
-                    Short-form edits and videos produced with speed, consistency, and delivery discipline — not creator chaos.
-                  </p>
-                </div>
-
-                <div className="md:col-span-4 md:pl-10 flex items-end">
-                  <p className="svc-body">
-                    Reels. Edits. Thumbnails. Content at volume.
-                  </p>
-                </div>
-              </motion.div>
+                  <div className="md:col-span-4 md:pl-10 flex items-end">
+                    <p className="svc-body">{layer.points}</p>
+                  </div>
+                </motion.div>
+              ))}
 
             </div>
           </div>
