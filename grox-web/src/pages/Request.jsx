@@ -108,9 +108,9 @@ export default function Request() {
 
     return (
         <>
-            <SEO 
-                title="Request Execution — GROX | Submit Your Project"
-                description="Submit your project to GROX. We execute design, development, and content systems with structure and speed. Response within 24-48 hours."
+            <SEO
+                title="Hire Web Development, Video Editing & Design Services | GROX"
+                description="Submit your project to hire experts in web development, video editing, and design. Fast response, structured execution, and high-quality results."
             />
             <StructuredData data={requestPageSchema} />
 

@@ -65,12 +65,12 @@ export default function VideoEditingServices() {
 
   return (
     <>
-      <SEO 
-        title="Video Editing Services for Creators | YouTube & Social Media — GROX"
-        description="Professional video editing services for content creators. Short-form and long-form editing, thumbnail design, and content production at volume. Fast turnaround, consistent quality."
+      <SEO
+        title="Professional Video Editing Services for Creators | GROX"
+        description="High-quality video editing for YouTubers, creators, and brands. Fast delivery and engaging edits that boost views."
       />
       <StructuredData data={pageSchema} />
-      
+
       <style>{`
         @import url('${FONT_URL}');
         .landing-page {
@@ -140,8 +140,8 @@ export default function VideoEditingServices() {
                 Fast turnaround • Consistent quality • Creator-focused
               </p>
 
-              <a 
-                href="/request" 
+              <a
+                href="/request"
                 style={{
                   display: "inline-flex",
                   alignItems: "center",
@@ -403,8 +403,8 @@ export default function VideoEditingServices() {
               }}>
                 Get professional video editing that keeps your content calendar on track.
               </p>
-              <a 
-                href="/request" 
+              <a
+                href="/request"
                 style={{
                   display: "inline-flex",
                   alignItems: "center",

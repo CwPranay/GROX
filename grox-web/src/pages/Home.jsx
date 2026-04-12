@@ -28,8 +28,8 @@ export default function Home() {
   return (
     <>
       <SEO 
-        title="GROX — Execution Company | Design, Development & Content"
-        description="GROX is an execution company delivering design, development, and content systems. No chaos. No delays. Just structured execution that ships."
+        title="Web Development, Video Editing & Design Services | GROX"
+       description="Hire experts for web development, video editing, and design services. Fast delivery, conversion-focused websites, and high-quality creative work."
       />
       <StructuredData data={homeSchema} />
       <Navbar />

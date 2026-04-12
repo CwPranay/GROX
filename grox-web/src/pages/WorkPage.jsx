@@ -488,9 +488,9 @@ export default function WorkPage() {
   return (
     <>
       <SEO 
-        title="Work — GROX | Execution Systems That Ship"
-        description="View GROX execution systems. Real projects, real outcomes. Design, development, and conversion systems built to deliver results."
-      />
+  title="Our Work & Portfolio | Web Development, Video Editing & Design | GROX"
+  description="Explore our portfolio of web development, video editing, and design projects. Real work, real results, and conversion-focused execution for businesses."
+/>
       <StructuredData data={workPageSchema} />
       <style>{`
         @import url('${FONT_URL}');

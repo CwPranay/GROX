@@ -65,12 +65,12 @@ export default function GymWebsiteDevelopment() {
 
   return (
     <>
-      <SEO 
-        title="Gym Website Development India | Fitness Website Design — GROX"
-        description="Professional gym website development in India. Conversion-focused fitness websites with membership systems, booking integration, and mobile-first design. Built to drive signups."
+      <SEO
+        title="Gym Website Development Services | GROX"
+        description="Get high-converting gym websites designed to attract members, showcase services, and grow your fitness business."
       />
       <StructuredData data={pageSchema} />
-      
+
       <style>{`
         @import url('${FONT_URL}');
         .landing-page {
@@ -140,8 +140,8 @@ export default function GymWebsiteDevelopment() {
                 Built to drive signups and grow your gym
               </p>
 
-              <a 
-                href="/request" 
+              <a
+                href="/request"
                 style={{
                   display: "inline-flex",
                   alignItems: "center",
@@ -342,8 +342,8 @@ export default function GymWebsiteDevelopment() {
               }}>
                 Get a conversion-focused gym website that drives signups and grows your business.
               </p>
-              <a 
-                href="/request" 
+              <a
+                href="/request"
                 style={{
                   display: "inline-flex",
                   alignItems: "center",
