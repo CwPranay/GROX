@@ -35,8 +35,8 @@ const process = [
 
 export default function GymWebsiteDevelopment() {
   const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: "Home", url: "https://grox.com" },
-    { name: "Gym Website Development India", url: "https://grox.com/gym-website-development-india" }
+    { name: "Home", url: "https://grox.tech" },
+    { name: "Gym Website Development India", url: "https://grox.tech/gym-website-development-india" }
   ]);
 
   const serviceSchema = {
