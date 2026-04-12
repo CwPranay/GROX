@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://grox.tech/sitemap.xml
